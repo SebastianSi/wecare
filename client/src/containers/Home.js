@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import Snackbar from 'material-ui/Snackbar';
 import MainTableContainer from './MainTableContainer';
-import '../css/App.css';
+import '../css/Layout.css';
 
 class Home extends Component {
 
@@ -38,7 +38,6 @@ class Home extends Component {
     render() {
 
         return (
-            <MuiThemeProvider>
                 <div className="App">
                     <header className="App-header">
                         <h1 className="App-title">Employees Management Platform</h1>
@@ -65,7 +64,6 @@ class Home extends Component {
                         {/*/>*/}
                     </div>
                 </div>
-            </MuiThemeProvider>
         );
     }
 }
