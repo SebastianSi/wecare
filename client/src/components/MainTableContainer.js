@@ -3,6 +3,7 @@ import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColu
 import EmployeeModal from './EditPatientModal';
 import Constants from '../AppConstants'
 import Checkb from '../common/Checkb'
+import utils from '../utils/utils'
 
 class MainTableContainer extends Component {
 
@@ -10,13 +11,32 @@ class MainTableContainer extends Component {
         super(props)
         this.state = {
             modalOpened: false,
-            employeeId: null
+            employeeId: null,
+            patients: [],
+            sortedBy: ''
         }
     }
 
-    onCellClicked = (row, col, event) => {
+    onHeaderCellClicked = (event) => {
+        console.log(event.target)
         console.log(event.target.innerHTML)
-        this.openEditModal(event.target.innerHTML)
+        if (event.target.innerHTML === 'FirstName') {
+            if (this.state.sortedBy === 'FirstName') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'ReverseFirstName')})
+                this.setState({sortedBy: 'ReverseFirstName'})
+            } else if (this.state.sortedBy === 'ReverseFirstName') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'FirstName')})
+                this.setState({sortedBy: 'FirstName'})
+            } else { //is first time
+                this.setState({patients: utils.sortPatients(this.state.patients, 'FirstName')})
+                this.setState({sortedBy: 'FirstName'})
+            }
+        }
+        // this.openEditModal(event.target.innerHTML)
+    }
+
+    componentWillReceiveProps(props) {
+        this.setState({patients: props.patients})
     }
 
     openEditModal = (employeeId) => {
@@ -55,8 +75,8 @@ class MainTableContainer extends Component {
         //TODO: if due date less than 3 days, textColor of row - Red
         //TODO: if checked row, change color back to black
 
-        const tableData = this.props.patients;
-        const tableContent = tableData && tableData.map((patient) => {
+        const patients = this.state.patients
+        const tableContent = patients && patients.map((patient) => {
             return <TableRow key={patient[Constants.ID]}>
                 {/*<TableRowColumn style={{cursor: 'pointer'}}>{patient[Constants.ID]}</TableRowColumn>*/}
                 <TableRowColumn style={{width: 95}}>{patient[Constants.CNP]}</TableRowColumn>
@@ -79,11 +99,12 @@ class MainTableContainer extends Component {
                         isOpen={this.state.modalOpened}
                         removeEmployee={this.removeEmployee}
                     />
-                <Table onCellClick={this.onCellClicked}
+                <Table
+
                        // bodyStyle={{overflow:'visible', width: 1500}}
                         >
                     <TableHeader>
-                        <TableRow>
+                        <TableRow  onClick={this.onHeaderCellClicked} >
                             <TableHeaderColumn style={{width: 95}}>CNP</TableHeaderColumn>
                             <TableHeaderColumn>FirstName</TableHeaderColumn>
                             <TableHeaderColumn>LastName</TableHeaderColumn>
