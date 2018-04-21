@@ -1,9 +1,26 @@
+/* navigation menu */
 .logo {
   width: 150px;
   height: 150px;
   display: inline-block;
   cursor: pointer;
 }
+
+/* footer */
+.page-footer {
+  background-color: #81C784;
+  color: #fff;
+}
+
+.page-footer li {
+  margin-bottom: 15px;
+  font-size: 18px;
+}
+.page-footer a {
+  color: #fff;
+  text-decoration: none;
+}
+
 
 @keyframes App-logo-spin {
   from {

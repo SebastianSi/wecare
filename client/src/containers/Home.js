@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import Snackbar from 'material-ui/Snackbar';
 import MainTableContainer from '../components/MainTableContainer';
-import '../css/Layout.css';
+import '../css/Layout.css'; // TO DO - movi it to the layout
 
 class Home extends Component {
 
