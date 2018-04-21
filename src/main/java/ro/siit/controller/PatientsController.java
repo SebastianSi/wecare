@@ -47,4 +47,10 @@ public class PatientsController extends AbstractController {
     public void delete(@PathVariable("id") final long id) {
         patientService.delete(id);
     }
+
+    @RequestMapping(value = "/patients/{id}/flag/{value}", method = RequestMethod.PUT)
+    @ResponseBody
+    public Long setFlag(@PathVariable("id") final long id, @PathVariable("value") final boolean value) {
+        return patientService.setFlag(id, value).orElse(-1L);
+    }
 }

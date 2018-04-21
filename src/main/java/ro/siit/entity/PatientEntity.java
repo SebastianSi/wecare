@@ -53,6 +53,9 @@ public class PatientEntity implements Serializable {
     @Column(name = "DUEDATE")
     private Date dueDate;
 
+    @Column(name = "DONE")
+    private Boolean done;
+
     public long getId() {
         return id;
     }
@@ -147,6 +150,14 @@ public class PatientEntity implements Serializable {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 
     public PatientEntity() {

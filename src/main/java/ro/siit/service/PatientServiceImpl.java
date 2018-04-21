@@ -44,6 +44,7 @@ public class PatientServiceImpl implements PatientService {
             p.setPhone(e.getPhone());
             p.setEmail(e.getEmail());
             p.setDueDate(e.getDueDate());
+            p.setDone(e.getDone());
             return p;
         });
     }
@@ -73,6 +74,7 @@ public class PatientServiceImpl implements PatientService {
         entity.setPhone(p.getPhone());
         entity.setEmail(p.getEmail());
         entity.setDueDate(p.getDueDate());
+        entity.setDone(p.getDone());
         return patientDAO.create(entity);
     }
 
@@ -90,6 +92,7 @@ public class PatientServiceImpl implements PatientService {
             e.setPhone(p.getPhone());
             e.setEmail(p.getEmail());
             e.setDueDate(p.getDueDate());
+            e.setDone(p.getDone());
             patientDAO.update(e);
         });
         return p.getId();
@@ -100,5 +103,16 @@ public class PatientServiceImpl implements PatientService {
     public void delete(final long id) {
         final Optional<PatientEntity> entity = patientDAO.findEntity(id, PatientEntity.class);
         entity.ifPresent(patientDAO::delete);
+    }
+
+    @Override
+    @Transactional
+    public Optional<Long> setFlag(final long id, final boolean value) {
+        final Optional<PatientEntity> entity = patientDAO.findEntity(id, PatientEntity.class);
+        entity.ifPresent(e -> {
+            e.setDone(value);
+            patientDAO.update(e);
+        });
+        return Optional.of(id);
     }
 }

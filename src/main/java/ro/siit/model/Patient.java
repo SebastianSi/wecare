@@ -16,9 +16,10 @@ public class Patient {
     private Long phone;
     private String email;
     private Date dueDate;
+    private Boolean done;
 
     public Patient(Long id, String cnp, String firstName, String lastName, String generalPractitioner, String hospital,
-                   String county, String city, String address, Long phone, String email, Date dueDate) {
+                   String county, String city, String address, Long phone, String email, Date dueDate, Boolean done) {
         this.id = id;
         this.cnp = cnp;
         this.firstName = firstName;
@@ -31,9 +32,11 @@ public class Patient {
         this.phone = phone;
         this.email = email;
         this.dueDate = dueDate;
+        this.done = done;
     }
 
-    public Patient() {}
+    public Patient() {
+    }
 
     public Long getId() {
         return id;
@@ -129,5 +132,13 @@ public class Patient {
 
     public void setDueDate(Date dueDate) {
         this.dueDate = dueDate;
+    }
+
+    public Boolean getDone() {
+        return done;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
     }
 }

@@ -14,4 +14,6 @@ public interface PatientService {
     Optional<Long> createOrUpdate(final Patient event);
 
     void delete(final long id);
+
+    Optional<Long> setFlag(final long id, final boolean value);
 }
