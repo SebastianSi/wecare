@@ -56,9 +56,12 @@ class MainTableContainer extends Component {
     //     })
     // }
 
-    onToggleCellClicked = (col, row, event) => {
+    onToggleCellClicked = (row, col, event) => {
 
-        //CLEANEST LINE OF CODE EVER:
+        //CLEANEST CODE EVER:
+
+        if (col !== 9) return null
+        
         console.log(event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML)
         let patientCnp = event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML
 
