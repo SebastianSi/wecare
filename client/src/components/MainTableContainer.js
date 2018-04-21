@@ -87,9 +87,14 @@ class MainTableContainer extends Component {
         //TODO: if due date less than 3 days, textColor of row - Red
         //TODO: if checked row, change color back to black
 
+        let duePatientStyle = {color: 'red'}
+
         const patients = this.state.patients
         const tableContent = patients && patients.length && patients.map((patient) => {
-            return <TableRow key={patient[Constants.ID]}>
+            let isPatientDueAndUnchecked = ( patient[Constants.DUE_DATE] - Date.now() ) < 259200000 && !patient[Constants.BOOL]
+            let patientRowStyle = isPatientDueAndUnchecked ? duePatientStyle : {}
+            // let timestamp = {}
+            return <TableRow key={patient[Constants.ID]} style={patientRowStyle}>
                 {/*<TableRowColumn style={{cursor: 'pointer'}}>{patient[Constants.ID]}</TableRowColumn>*/}
                 <TableRowColumn style={{width: 95}}>{patient[Constants.CNP]}</TableRowColumn>
                 <TableRowColumn>{patient[Constants.FIRST_NAME]}</TableRowColumn>
@@ -100,7 +105,7 @@ class MainTableContainer extends Component {
                 <TableRowColumn style={{width: 140}}>{patient[Constants.GENERAL_PRACTITIONER]}</TableRowColumn>
                 <TableRowColumn>{patient[Constants.TELEPHONE]}</TableRowColumn>
                 {/*<TableRowColumn style={{width: 190}}>{patient[Constants.EMAIL]}</TableRowColumn>*/}
-                <TableRowColumn style={{width: 190}}>{patient[Constants.DUE_DATE]}</TableRowColumn>
+                <TableRowColumn style={{width: 190}}>{new Date( patient[Constants.DUE_DATE] ).toDateString()}</TableRowColumn>
                 <TableRowColumn style={{width: 50}}
                                 onClick={this.onToggleCellClicked}
                 >{patient[Constants.BOOL]}
