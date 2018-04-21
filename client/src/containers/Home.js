@@ -20,19 +20,19 @@ class Home extends Component {
 
     getEmployeesData = () => {
 
-        fetch('api/employee', {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res=>res.json())
-            .then( res => {
-                console.log(res)
-                this.setState({employeesData: res})
-            }).catch(function(err) {
-            console.log(err)
-        })
+        // fetch('api/employee', {
+        //     method: 'get',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(res=>res.json())
+        //     .then( res => {
+        //         console.log(res)
+        //         this.setState({employeesData: res})
+        //     }).catch(function(err) {
+        //     console.log(err)
+        // })
     }
 
     render() {
