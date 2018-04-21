@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
-import EmployeeModal from '../components/EditPatientModal';
+import EmployeeModal from './EditPatientModal';
 
 class MainTableContainer extends Component {
 

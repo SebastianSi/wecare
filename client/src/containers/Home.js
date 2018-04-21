@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 // import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // import Snackbar from 'material-ui/Snackbar';
-import MainTableContainer from './MainTableContainer';
+import MainTableContainer from '../components/MainTableContainer';
 import '../css/Layout.css';
 
 class Home extends Component {
