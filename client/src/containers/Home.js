@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 // import Snackbar from 'material-ui/Snackbar';
 import MainTableContainer from '../components/MainTableContainer';
 import '../css/Layout.css';
-import Patients from '../mock_data/patients'
+// import Patients from '../mock_data/patients'
 
 class Home extends Component {
 
@@ -21,20 +21,20 @@ class Home extends Component {
 
     getPatientsData = () => {
 
-        // fetch('api/employee', {
-        //     method: 'get',
-        //     headers: {
-        //         'Accept': 'application/json',
-        //         'Content-Type': 'application/json'
-        //     }
-        // }).then(res=>res.json())
-        //     .then( res => {
-        //         console.log(res)
-        //         this.setState({employeesData: res})
-        //     }).catch(function(err) {
-        //     console.log(err)
-        // })
-        this.setState({patients: Patients})
+        fetch('api/patients', {
+            method: 'get',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }
+        }).then(res=>res.json())
+            .then( res => {
+                console.log(res)
+                this.setState({patients: res})
+            }).catch(function(err) {
+            console.log(err)
+        })
+
     }
 
     render() {
@@ -49,6 +49,7 @@ class Home extends Component {
                     </p>
                     <MainTableContainer
                         patients={this.state.patients}
+                        getPatientsData={this.getPatientsData}
                     />
                     <div>
                         {/*<Snackbar*/}

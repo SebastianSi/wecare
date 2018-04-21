@@ -12,10 +12,11 @@ const styles = {
 
 class Checkb extends React.Component {
     state = {
-        checked: false
+        checked: this.props.checked
     }
 
     updateCheck() {
+        this.props.notifyToggle(!this.state.checked)
         this.setState((oldState) => {
             return {
                 checked: !oldState.checked,
@@ -23,12 +24,16 @@ class Checkb extends React.Component {
         });
     }
 
+    componentWillReceiveProps(props) {
+        this.setState({checked: props.checked})
+    }
+
     render() {
         return (
             <div style={styles.block}>
                 <Checkbox
                     label=""
-                    checked={this.state.checked}
+                    checked={this.props.checked}
                     onCheck={this.updateCheck.bind(this)}
                     style={styles.checkbox}
                 />
