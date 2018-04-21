@@ -5,7 +5,7 @@ import java.util.Date;
 public class Patient {
 
     private Long id;
-    private Long cnp;
+    private String cnp;
     private String firstName;
     private String lastName;
     private String generalPractitioner;
@@ -17,7 +17,7 @@ public class Patient {
     private String email;
     private Date dueDate;
 
-    public Patient(Long id, Long cnp, String firstName, String lastName, String generalPractitioner, String hospital,
+    public Patient(Long id, String cnp, String firstName, String lastName, String generalPractitioner, String hospital,
                    String county, String city, String address, Long phone, String email, Date dueDate) {
         this.id = id;
         this.cnp = cnp;
@@ -33,6 +33,8 @@ public class Patient {
         this.dueDate = dueDate;
     }
 
+    public Patient() {}
+
     public Long getId() {
         return id;
     }
@@ -41,11 +43,11 @@ public class Patient {
         this.id = id;
     }
 
-    public Long getCnp() {
+    public String getCnp() {
         return cnp;
     }
 
-    public void setCnp(Long cnp) {
+    public void setCnp(String cnp) {
         this.cnp = cnp;
     }
 

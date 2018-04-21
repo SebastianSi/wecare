@@ -21,7 +21,7 @@ public class PatientEntity implements Serializable {
     private long id;
 
     @Column(name = "CNP")
-    private Long cnp;
+    private String cnp;
 
     @Column(name = "FIRSTNAME")
     private String firstName;
@@ -61,11 +61,11 @@ public class PatientEntity implements Serializable {
         this.id = id;
     }
 
-    public Long getCnp() {
+    public String getCnp() {
         return cnp;
     }
 
-    public void setCnp(Long cnp) {
+    public void setCnp(String cnp) {
         this.cnp = cnp;
     }
 
