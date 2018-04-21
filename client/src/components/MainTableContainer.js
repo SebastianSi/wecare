@@ -18,7 +18,6 @@ class MainTableContainer extends Component {
     }
 
     onHeaderCellClicked = (event) => {
-        console.log(event.target)
         console.log(event.target.innerHTML)
         if (event.target.innerHTML === 'FirstName') {
             if (this.state.sortedBy === 'FirstName') {
@@ -30,6 +29,17 @@ class MainTableContainer extends Component {
             } else { //is first time
                 this.setState({patients: utils.sortPatients(this.state.patients, 'FirstName')})
                 this.setState({sortedBy: 'FirstName'})
+            }
+        } else if (event.target.innerHTML === 'Due Date') {
+            if (this.state.sortedBy === 'DueDate') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'ReverseDueDate')})
+                this.setState({sortedBy: 'ReverseDueDate'})
+            } else if (this.state.sortedBy === 'ReverseDueDate') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'DueDate')})
+                this.setState({sortedBy: 'DueDate'})
+            } else { //is first time
+                this.setState({patients: utils.sortPatients(this.state.patients, 'DueDate')})
+                this.setState({sortedBy: 'DueDate'})
             }
         }
         // this.openEditModal(event.target.innerHTML)
