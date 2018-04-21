@@ -18,7 +18,6 @@ class MainTableContainer extends Component {
     }
 
     onHeaderCellClicked = (event) => {
-        console.log(event.target)
         console.log(event.target.innerHTML)
         if (event.target.innerHTML === 'FirstName') {
             if (this.state.sortedBy === 'FirstName') {
@@ -30,6 +29,17 @@ class MainTableContainer extends Component {
             } else { //is first time
                 this.setState({patients: utils.sortPatients(this.state.patients, 'FirstName')})
                 this.setState({sortedBy: 'FirstName'})
+            }
+        } else if (event.target.innerHTML === 'Due Date') {
+            if (this.state.sortedBy === 'DueDate') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'ReverseDueDate')})
+                this.setState({sortedBy: 'ReverseDueDate'})
+            } else if (this.state.sortedBy === 'ReverseDueDate') {
+                this.setState({patients: utils.sortPatients(this.state.patients, 'DueDate')})
+                this.setState({sortedBy: 'DueDate'})
+            } else { //is first time
+                this.setState({patients: utils.sortPatients(this.state.patients, 'DueDate')})
+                this.setState({sortedBy: 'DueDate'})
             }
         }
         // this.openEditModal(event.target.innerHTML)
@@ -46,9 +56,12 @@ class MainTableContainer extends Component {
     //     })
     // }
 
-    onToggleCellClicked = (col, row, event) => {
+    onToggleCellClicked = (row, col, event) => {
 
-        //CLEANEST LINE OF CODE EVER:
+        //CLEANEST CODE EVER:
+
+        if (col !== 9) return null
+        
         console.log(event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML)
         let patientCnp = event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML
 
