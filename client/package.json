@@ -1,7 +1,7 @@
 {
   "name": "rd-care",
   "version": "0.1.0",
-  "proxy": "http://localhost:8082/",
+  "proxy": "http://localhost:8080/",
   "private": true,
   "dependencies": {
     "material-ui": "0.20.0",

@@ -11,7 +11,7 @@ class MainTableContainer extends Component {
         super(props)
         this.state = {
             modalOpened: false,
-            employeeId: null,
+            currPatientId: null,
             patients: [],
             sortedBy: ''
         }
@@ -39,44 +39,56 @@ class MainTableContainer extends Component {
         this.setState({patients: props.patients})
     }
 
-    openEditModal = (employeeId) => {
-        this.setState({
-            modalOpened: true,
-            employeeId
-        })
+    // openEditModal = (employeeId) => {
+    //     this.setState({
+    //         modalOpened: true,
+    //         employeeId
+    //     })
+    // }
+
+    onToggleCellClicked = (col, row, event) => {
+
+        //CLEANEST LINE OF CODE EVER:
+        console.log(event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML)
+        let patientCnp = event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML
+
+        console.log(this.state.patients)
+        let patientId = utils.getPatientByCnp(this.state.patients, patientCnp)[Constants.ID]
+        this.setState({currPatientId: patientId})
     }
 
-    removeEmployee = () => {
-        console.log('REMOVING PATIENT', this.state.employeeId)
-        let { employeeId } = this.state
+    handleCheckboxToggled = (value) => {
+        console.log('VALUEE: ', value)
+        setTimeout(() => {
+            let patientId = this.state.currPatientId
 
-        fetch(`api/employee/delete/${employeeId}`, {
-            method: 'delete',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res=>res.json())
-            .then( res => {
-                console.log(res)
-                this.setState({
-                    modalOpened: false
-                })
-                this.props.getPatients()
-            }).catch(function(err) {
-            console.log(err)
-        });
+                fetch(`api/patients/${patientId}/flag/${value}`, {
+                    method: 'put',
+                    headers: {
+                        'Accept': 'application/json',
+                        'Content-Type': 'application/json'
+                    }
+                }).then(res=>res.json())
+                    .then( res => {
+                        console.log(res)
+                        this.props.getPatientsData()
+                    }).catch(function(err) {
+                    console.log(err)
+                });
+        }, 50)
+
+
     }
+
 
 
     render() {
 
-        //TODO: Checkbox column
         //TODO: if due date less than 3 days, textColor of row - Red
         //TODO: if checked row, change color back to black
 
         const patients = this.state.patients
-        const tableContent = patients && patients.map((patient) => {
+        const tableContent = patients && patients.length && patients.map((patient) => {
             return <TableRow key={patient[Constants.ID]}>
                 {/*<TableRowColumn style={{cursor: 'pointer'}}>{patient[Constants.ID]}</TableRowColumn>*/}
                 <TableRowColumn style={{width: 95}}>{patient[Constants.CNP]}</TableRowColumn>
@@ -89,7 +101,13 @@ class MainTableContainer extends Component {
                 <TableRowColumn>{patient[Constants.TELEPHONE]}</TableRowColumn>
                 {/*<TableRowColumn style={{width: 190}}>{patient[Constants.EMAIL]}</TableRowColumn>*/}
                 <TableRowColumn style={{width: 190}}>{patient[Constants.DUE_DATE]}</TableRowColumn>
-                <TableRowColumn style={{width: 50}}>{patient[Constants.BOOL]} <Checkb/></TableRowColumn>
+                <TableRowColumn style={{width: 50}}
+                                onClick={this.onToggleCellClicked}
+                >{patient[Constants.BOOL]}
+                    <Checkb notifyToggle={this.handleCheckboxToggled}
+                            checked={patient[Constants.BOOL]}
+                            />
+                </TableRowColumn>
             </TableRow>
         })
 
@@ -100,7 +118,7 @@ class MainTableContainer extends Component {
                         removeEmployee={this.removeEmployee}
                     />
                 <Table
-
+                    onCellClick={this.onToggleCellClicked}
                        // bodyStyle={{overflow:'visible', width: 1500}}
                         >
                     <TableHeader>
@@ -115,7 +133,7 @@ class MainTableContainer extends Component {
                             <TableHeaderColumn>Telephone</TableHeaderColumn>
                             {/*<TableHeaderColumn style={{width: 190}}>Email</TableHeaderColumn>*/}
                             <TableHeaderColumn style={{width: 190}}>Due Date</TableHeaderColumn>
-                            <TableHeaderColumn style={{width: 50}}>Bool</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: 50}}>Done</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>{tableContent}</TableBody>

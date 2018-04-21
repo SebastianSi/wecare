@@ -32,6 +32,9 @@ const utils = {
             default:
                 return newArr
         }
+    },
+    getPatientByCnp: function(arr, cnp) {
+        return arr.find(el => el.cnp === cnp)
     }
 }
 
