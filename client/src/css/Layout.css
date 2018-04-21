@@ -1,32 +1,52 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 80px;
-}
-
-.App-header {
-  background-color: #222;
-  height: 50px;
-  padding: 20px;
-  color: white;
-}
-
-.App-title {
-  font-size: 1.5em;
-}
-
-.App-intro {
-  font-size: large;
+.logo {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  cursor: pointer;
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
-thead > tr > th:first-of-type {
-  display: none
+thead>tr>th:first-of-type {
+  display: none;
+}
+
+/* not found page */
+
+.page-not-found {
+  float: left;
+  width: 100%;
+  margin-top: 50px;
+  margin-bottom: 50px;
+  text-align: center;
+}
+
+.page-not-found_paragraph {
+  display: block;
+  width: 100%;
+  float: none;
+  margin-bottom: 30px;
+  font-size: 18px;
+  color: dark;
+  font-weight: bold;
+}
+
+.page-not-found_link {
+  display: block;
+  color: grey;
+  width: 100%;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.page-not-found__link:hover {
+  color: grey;
+  text-decoration: none;
 }
