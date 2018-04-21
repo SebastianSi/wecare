@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 // import Snackbar from 'material-ui/Snackbar';
 import MainTableContainer from '../components/MainTableContainer';
 import '../css/Layout.css';
-// import Patients from '../mock_data/patients'
 
 class Home extends Component {
 
