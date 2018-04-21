@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import {Table, TableBody, TableHeader, TableHeaderColumn, TableRow, TableRowColumn} from 'material-ui/Table';
 import EmployeeModal from './EditPatientModal';
+import Constants from '../AppConstants'
+import Checkb from '../common/Checkb'
 
 class MainTableContainer extends Component {
 
@@ -25,7 +27,7 @@ class MainTableContainer extends Component {
     }
 
     removeEmployee = () => {
-        console.log('REMOVING EMPLOYEE', this.state.employeeId)
+        console.log('REMOVING PATIENT', this.state.employeeId)
         let { employeeId } = this.state
 
         fetch(`api/employee/delete/${employeeId}`, {
@@ -40,7 +42,7 @@ class MainTableContainer extends Component {
                 this.setState({
                     modalOpened: false
                 })
-                this.props.getEmployees()
+                this.props.getPatients()
             }).catch(function(err) {
             console.log(err)
         });
@@ -49,18 +51,25 @@ class MainTableContainer extends Component {
 
     render() {
 
-        const tableData = this.props.employeesData;
-        const tableContent = tableData && tableData.map((angajat) => {
-            return <TableRow key={angajat.id}
-                             style={{paddingLeft: 20}}>
-                <TableRowColumn style={{cursor: 'pointer'}}>{angajat.id}</TableRowColumn>
-                <TableRowColumn>{angajat.firstName}</TableRowColumn>
-                <TableRowColumn>{angajat.lastName}</TableRowColumn>
-                <TableRowColumn>{angajat.birthDate}</TableRowColumn>
-                <TableRowColumn>{angajat.gender}</TableRowColumn>
-                <TableRowColumn>{angajat.employmentDate}</TableRowColumn>
-                <TableRowColumn>{angajat.jobTitle}</TableRowColumn>
-                <TableRowColumn>{angajat.salary}</TableRowColumn>
+        //TODO: Checkbox column
+        //TODO: if due date less than 3 days, textColor of row - Red
+        //TODO: if checked row, change color back to black
+
+        const tableData = this.props.patients;
+        const tableContent = tableData && tableData.map((patient) => {
+            return <TableRow key={patient[Constants.ID]}>
+                {/*<TableRowColumn style={{cursor: 'pointer'}}>{patient[Constants.ID]}</TableRowColumn>*/}
+                <TableRowColumn style={{width: 95}}>{patient[Constants.CNP]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.FIRST_NAME]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.LAST_NAME]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.CITY]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.COUNTY]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.MAIN_HOSPITAL]}</TableRowColumn>
+                <TableRowColumn style={{width: 140}}>{patient[Constants.GENERAL_PRACTITIONER]}</TableRowColumn>
+                <TableRowColumn>{patient[Constants.TELEPHONE]}</TableRowColumn>
+                {/*<TableRowColumn style={{width: 190}}>{patient[Constants.EMAIL]}</TableRowColumn>*/}
+                <TableRowColumn style={{width: 190}}>{patient[Constants.DUE_DATE]}</TableRowColumn>
+                <TableRowColumn style={{width: 50}}>{patient[Constants.BOOL]} <Checkb/></TableRowColumn>
             </TableRow>
         })
 
@@ -71,17 +80,21 @@ class MainTableContainer extends Component {
                         removeEmployee={this.removeEmployee}
                     />
                 <Table onCellClick={this.onCellClicked}
+                       // bodyStyle={{overflow:'visible', width: 1500}}
                         >
                     <TableHeader>
                         <TableRow>
-                            <TableHeaderColumn>ID</TableHeaderColumn>
-                            <TableHeaderColumn>firstName</TableHeaderColumn>
-                            <TableHeaderColumn>lastName</TableHeaderColumn>
-                            <TableHeaderColumn>birthDate</TableHeaderColumn>
-                            <TableHeaderColumn>gender</TableHeaderColumn>
-                            <TableHeaderColumn>employmentDate</TableHeaderColumn>
-                            <TableHeaderColumn>jobTitle</TableHeaderColumn>
-                            <TableHeaderColumn>salary</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: 95}}>CNP</TableHeaderColumn>
+                            <TableHeaderColumn>FirstName</TableHeaderColumn>
+                            <TableHeaderColumn>LastName</TableHeaderColumn>
+                            <TableHeaderColumn>City</TableHeaderColumn>
+                            <TableHeaderColumn>County</TableHeaderColumn>
+                            <TableHeaderColumn>MainHospital</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: 140}}>GeneralPractitioner</TableHeaderColumn>
+                            <TableHeaderColumn>Telephone</TableHeaderColumn>
+                            {/*<TableHeaderColumn style={{width: 190}}>Email</TableHeaderColumn>*/}
+                            <TableHeaderColumn style={{width: 190}}>Due Date</TableHeaderColumn>
+                            <TableHeaderColumn style={{width: 50}}>Bool</TableHeaderColumn>
                         </TableRow>
                     </TableHeader>
                     <TableBody displayRowCheckbox={false}>{tableContent}</TableBody>
