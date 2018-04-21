@@ -9,7 +9,8 @@ const Constants = {
     CITY: 'city',
     COUNTY: 'county',
     MAIN_HOSPITAL: 'mainHospital',
-    GENERAL_PRACTITIONER: 'generalPractitioner'
+    GENERAL_PRACTITIONER: 'generalPractitioner',
+    BOOL: 'bool'
 }
 
 export default Constants

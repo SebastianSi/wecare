@@ -1,7 +1,7 @@
 [
   {
     "id": 345,
-    "CNP": 123456789786,
+    "cnp": "123456789786",
     "firstName": "Gigel",
     "lastName": "Ursache",
     "dueDate": "Apr 19th 2019",
@@ -10,11 +10,12 @@
     "city": "Cluj-Napoca",
     "county": "Cluj",
     "mainHospital": "Regina Maria",
-    "generalPractitioner": "Petrescu Ioana"
+    "generalPractitioner": "Petrescu Ioana",
+    "bool": true
   },
   {
     "id": 346,
-    "CNP": 27845689786,
+    "cnp": "27845689786",
     "firstName": "Ionela",
     "lastName": "Vasile",
     "dueDate": "May 16th 2018",
@@ -23,7 +24,8 @@
     "city": "Dej",
     "county": "Cluj",
     "mainHospital": "Regina Maria",
-    "generalPractitioner": "Petrescu Ioana"
+    "generalPractitioner": "Petrescu Ioana",
+    "bool": false
   }
 
 ]

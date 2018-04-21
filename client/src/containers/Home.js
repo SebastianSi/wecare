@@ -3,36 +3,38 @@ import React, { Component } from 'react';
 // import Snackbar from 'material-ui/Snackbar';
 import MainTableContainer from '../components/MainTableContainer';
 import '../css/Layout.css';
+import Patients from '../mock_data/patients'
 
 class Home extends Component {
 
     constructor(props){
         super(props);
         this.state={
-            employeesData: []
+            patients: []
         }
     }
 
     componentDidMount() {
-        this.getEmployeesData()
+        this.getPatientsData()
     }
 
 
-    getEmployeesData = () => {
+    getPatientsData = () => {
 
-        fetch('api/employee', {
-            method: 'get',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            }
-        }).then(res=>res.json())
-            .then( res => {
-                console.log(res)
-                this.setState({employeesData: res})
-            }).catch(function(err) {
-            console.log(err)
-        })
+        // fetch('api/employee', {
+        //     method: 'get',
+        //     headers: {
+        //         'Accept': 'application/json',
+        //         'Content-Type': 'application/json'
+        //     }
+        // }).then(res=>res.json())
+        //     .then( res => {
+        //         console.log(res)
+        //         this.setState({employeesData: res})
+        //     }).catch(function(err) {
+        //     console.log(err)
+        // })
+        this.setState({patients: Patients})
     }
 
     render() {
@@ -46,8 +48,7 @@ class Home extends Component {
                         Built with Java, Spring, React, and Material-UI.
                     </p>
                     <MainTableContainer
-                        getEmployees={this.getEmployeesData}
-                        employeesData={this.state.employeesData}
+                        patients={this.state.patients}
                     />
                     <div>
                         {/*<Snackbar*/}
