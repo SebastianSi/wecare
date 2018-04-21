@@ -1,0 +1,42 @@
+package ro.siit.dao;
+
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
+import javax.annotation.Resource;
+import java.util.Optional;
+
+/**
+ * Base class for the data access layer.
+ * It provides the session factory to be used by the actual implementations.
+ */
+public abstract class BaseDAOImpl implements BaseDAO {
+
+    @Resource
+    private SessionFactory sessionFactory;
+
+    protected Session getCurrentSession() {
+        return sessionFactory.getCurrentSession();
+    }
+
+    @Override
+    public <T> Optional<T> findEntity(long id, Class<T> clazz) {
+        return Optional.ofNullable((T)getCurrentSession().get(clazz, id));
+    }
+
+    public Long create(Object object) {
+        return (Long)getCurrentSession().save(object);
+    }
+
+    public void update(Object object) {
+        getCurrentSession().update(object);
+    }
+
+    public void delete(Object object) {
+        getCurrentSession().delete(object);
+    }
+
+    public <T> boolean isValid(long id, Class<T> clazz) {
+        return findEntity(id, clazz).map(e -> true).orElse(false);
+    }
+}
