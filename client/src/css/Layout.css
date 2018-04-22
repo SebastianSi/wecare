@@ -5,6 +5,13 @@
   cursor: pointer;
 }
 
+.navbar-nav {
+  padding-left: 0;
+}
+
+.navbar-brand {
+  padding-left: 0;
+}
  .navbar-nav .nav-link {
   color: #fff;
   font-size: 30px;
@@ -40,6 +47,10 @@
   background-color: #343a40;
 }
 
+
+.site-heading {
+
+}
 
 /*informatii utile*/
 .green{
@@ -276,7 +287,7 @@ header.masthead .overlay {
 header.masthead .page-heading,
 header.masthead .post-heading,
 header.masthead .site-heading {
-  padding: 200px 0 150px;
+  padding: 140px 0 150px;
   color: white;
 }
 

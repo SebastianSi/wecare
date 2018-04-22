@@ -14,7 +14,7 @@ class Navigation extends Component {
           className="navbar navbar-expand-lg navbar-light fixed-top"
           id="mainNav"
         >
-          <div className="container">
+          <div className="container-fluid">
             <div className="navbar-brand" href="/">
               <img className= "logo" src={Logo} alt="Logo"
               src={Logo}
@@ -42,7 +42,7 @@ class Navigation extends Component {
                 <div className="site-heading">
                   <h1>CARE RD</h1>
                   <span className="subheading">
-                  Credem in pacienti si administram in sanatate 
+                    Traim impreuna, invatam impreuna
                   </span>
                 </div>
               </div>
