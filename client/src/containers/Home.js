@@ -4,6 +4,7 @@ import React, { Component } from 'react'
 import MainTableContainer from '../components/MainTableContainer'
 import MainHero from '../components/MainHero'
 import '../css/Layout.css'
+import Divider from 'material-ui/Divider';
 
 class Home extends Component {
   constructor(props) {
@@ -43,6 +44,9 @@ class Home extends Component {
           <h1 className="App-title" />
         </header>
         <p className="App-intro" />
+          <Divider
+            style={{marginBottom: 10}}
+          />
         <MainTableContainer
           patients={this.state.patients}
           getPatientsData={this.getPatientsData}
