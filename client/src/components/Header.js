@@ -42,7 +42,7 @@ class Navigation extends Component {
                 <div className="site-heading">
                   <h1>CARE RD</h1>
                   <span className="subheading">
-                    some lorem 
+                  Credem in pacienti si administram in sanatate 
                   </span>
                 </div>
               </div>

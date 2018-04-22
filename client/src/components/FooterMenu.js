@@ -15,6 +15,9 @@ export default class FooterMenu extends Component {
                     <a href="https://www.participrare.ro" target="_blank" rel="noopener noreferrer">Participrare.ro</a>
                 </li>
                 <li>
+                    <a href="http://www.participrare.ro/retea-1" target="_blank" rel="noopener noreferrer">Harta Serviciilor</a>
+                </li>
+                <li>
                     <a href="http://edubolirare.ro" target="_blank" rel="noopener noreferrer">Edubolirare.ro</a>
                 </li>
                 <li>
