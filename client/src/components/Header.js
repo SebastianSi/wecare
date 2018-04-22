@@ -3,6 +3,7 @@ import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
 import Logo from '../images/logo.png'
 import Heroes from '../images/heroes.png'
+
 //import './Header.scss'
 class Navigation extends Component {
   render() {
@@ -21,19 +22,6 @@ class Navigation extends Component {
               onClick={() => history.push('/')}
               />
             </div>
-            <button
-              className="navbar-toggler navbar-toggler-right"
-              type="button"
-              data-toggle="collapse"
-              data-target="#navbarResponsive"
-              aria-controls="navbarResponsive"
-              aria-expanded="false"
-              aria-label="Toggle navigation"
-            >
-              Menu
-              <i className="fa fa-bars" />
-            </button>
-            <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
                 <a className="nav-link" href="/utils">Circuitul Pacientului</a>
@@ -42,7 +30,6 @@ class Navigation extends Component {
                 <a className="nav-link" href="/faq">FAQ</a>
                 </li>
               </ul>
-            </div>
           </div>
         </nav>
         <header
