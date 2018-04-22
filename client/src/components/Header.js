@@ -1,40 +1,72 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react'
 import {withRouter} from 'react-router-dom'
 import PropTypes from 'prop-types'
-import {
-  Navbar,
-  NavbarBrand,
-  Nav,
-  NavItem,
-  NavLink
-} from 'reactstrap';
 import Logo from '../images/logo.png'
-//import Search from '../Search/Search'
+import Heroes from '../images/heroes.png'
 //import './Header.scss'
-
 class Navigation extends Component {
   render() {
     const {history} = this.props;
-    return(
+    return (
       <div>
-        <Navbar color="light" light expand="md">
-          <NavbarBrand href="/">Acasa</NavbarBrand>
-            <Nav className="ml-auto" navbar>
-              <NavItem>
-                <NavLink href="/utils">Circuitul Pacientului</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href="/faq">FAQ</NavLink>
-              </NavItem>
-            </Nav>
-        </Navbar>
+        <nav
+          className="navbar navbar-expand-lg navbar-light fixed-top"
+          id="mainNav"
+        >
+          <div className="container">
+            <div className="navbar-brand" href="/">
+              <img className= "logo" src={Logo} alt="Logo"
+              src={Logo}
+              alt="care-logo"
+              onClick={() => history.push('/')}
+              />
+            </div>
+            <button
+              className="navbar-toggler navbar-toggler-right"
+              type="button"
+              data-toggle="collapse"
+              data-target="#navbarResponsive"
+              aria-controls="navbarResponsive"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              Menu
+              <i className="fa fa-bars" />
+            </button>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+              <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                <a className="nav-link" href="/utils">Circuitul Pacientului</a>
+                </li>
+                <li className="nav-item">
+                <a className="nav-link" href="/faq">FAQ</a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </nav>
+        <header
+          className="masthead"
+        >
+          <div className="overlay" />
+          <div className="container">
+            <div className="row">
+              <div className="col-lg-8 col-md-10 mx-auto">
+                <div className="site-heading">
+                  <h1>CARE RD</h1>
+                  <span className="subheading">
+                    some lorem 
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </header>
       </div>
-    );
+    )
   }
 }
-
 Navigation.propTypes = {
   history: PropTypes.object.isRequired
 };
-
-export default withRouter(Navigation);
+export default withRouter(Navigation)
