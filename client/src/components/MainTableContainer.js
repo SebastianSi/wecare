@@ -49,26 +49,42 @@ class MainTableContainer extends Component {
         this.setState({patients: props.patients})
     }
 
-    // openEditModal = (employeeId) => {
-    //     this.setState({
-    //         modalOpened: true,
-    //         employeeId
-    //     })
-    // }
+    openEditModal = (currPatientId) => {
+        this.setState({
+            modalOpened: true,
+            currPatientId
+        })
+    }
 
     onToggleCellClicked = (row, col, event) => {
 
         //CLEANEST CODE EVER:
 
-        if (col !== 9) return null
-        
-        console.log(event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML)
-        let patientCnp = event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML
+        console.log('COL', col)
+        if (col !== 9) {
+            console.log(event.target.parentNode.childNodes[0].innerHTML)
+            let patientCnp = event.target.parentNode.childNodes[0].innerHTML
 
-        console.log(this.state.patients)
-        let patientId = utils.getPatientByCnp(this.state.patients, patientCnp)[Constants.ID]
-        this.setState({currPatientId: patientId})
+            console.log(this.state.patients)
+            let patientId = utils.getPatientByCnp(this.state.patients, patientCnp)[Constants.ID]
+            this.setState({currPatientId: patientId})
+            this.openEditModal(patientId)
+            return null
+        } else {
+            this.setState({
+                modalOpened: false
+            })
+            console.log(event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML)
+            let patientCnp = event.target.parentNode.parentNode.parentElement.parentNode.childNodes[0].innerHTML
+
+            console.log(this.state.patients)
+            let patientId = utils.getPatientByCnp(this.state.patients, patientCnp)[Constants.ID]
+            this.setState({currPatientId: patientId})
+        }
+
     }
+
+
 
     handleCheckboxToggled = (value) => {
         console.log('VALUEE: ', value)
@@ -96,9 +112,6 @@ class MainTableContainer extends Component {
 
 
     render() {
-
-        //TODO: if due date less than 3 days, textColor of row - Red
-        //TODO: if checked row, change color back to black
 
         let duePatientStyle = {color: 'red'}
 
@@ -132,11 +145,12 @@ class MainTableContainer extends Component {
         return (
             <div>
                     <EmployeeModal
+                        patientId={this.state.currPatientId}
                         isOpen={this.state.modalOpened}
-                        removeEmployee={this.removeEmployee}
                     />
                 <Table
                     onCellClick={this.onToggleCellClicked}
+                    style={{overflow: 'hidden'}}
                        // bodyStyle={{overflow:'visible', width: 1500}}
                         >
                     <TableHeader>
