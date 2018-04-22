@@ -3,7 +3,7 @@ import Dialog from 'material-ui/Dialog';
 import FlatButton from 'material-ui/FlatButton';
 import TextField from 'material-ui/TextField';
 import Constants from "../AppConstants";
-// import Divider from 'material-ui/Divider';
+
 
 export default class EditPatientModal extends React.Component {
     state = {
