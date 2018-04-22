@@ -35,6 +35,9 @@ export default class FooterMenu extends Component {
                 <li>
                     <a href="/">Confidentialitatea Datelor</a>
                 </li>
+                <li>
+                    <a href="/">Contact</a>
+                </li>
             </ul>
         </div>
 
@@ -42,13 +45,16 @@ export default class FooterMenu extends Component {
             <h4 className="mb-4 mt-3 font-weight-bold">Cum ajung</h4>
             <ul className="list-unstyled">
                 <li>
-                    <a href="http://mersultrenurilorcfr.ro/imtif/PleSos.aspx?key=qM62Qbw76d4ztPtS7AKTSz8i+qUanlA1qijcCEsRA/h/KYveB+B0ctbauV+Tc33hhPnh8za93y89vRm21SGctGhv3boJGH3mCIy2S9cv8Js=&lng=ro">Mersul Trenurilor</a>
+                    <a href="http://mersultrenurilorcfr.ro/imtif/PleSos.aspx?key=qM62Qbw76d4ztPtS7AKTSz8i+qUanlA1qijcCEsRA/h/KYveB+B0ctbauV+Tc33hhPnh8za93y89vRm21SGctGhv3boJGH3mCIy2S9cv8Js=&lng=ro"
+                    target="_blank" rel="noopener noreferrer">Mersul Trenurilor</a>
                 </li>
                 <li>
-                    <a href="https://www.google.ro/maps/place/Zal%C4%83u/data=!4m2!3m1!1s0x474842a15ce95f31:0x56c280de3735b817?sa=X&ved=0ahUKEwj4xpzN_cvaAhVO2KQKHaK7DG8Q8gEIwAEwEA">Harta Zalau</a>
+                    <a href="https://www.google.ro/maps/place/Zal%C4%83u/data=!4m2!3m1!1s0x474842a15ce95f31:0x56c280de3735b817?sa=X&ved=0ahUKEwj4xpzN_cvaAhVO2KQKHaK7DG8Q8gEIwAEwEA"
+                    target="_blank" rel="noopener noreferrer">Harta Zalau</a>
                 </li>
                 <li>
-                    <a href="https://www.autogari.ro/Transport/Zalau-ClujNapoca">Autogara</a>
+                    <a href="https://www.autogari.ro/Transport/Zalau-ClujNapoca"
+                    target="_blank" rel="noopener noreferrer">Autogara</a>
                 </li>
             </ul>
         </div>

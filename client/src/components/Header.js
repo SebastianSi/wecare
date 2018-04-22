@@ -27,7 +27,7 @@ class Navigation extends Component {
                 <a className="nav-link" href="/utils">Circuitul Pacientului</a>
                 </li>
                 <li className="nav-item">
-                <a className="nav-link" href="/faq">FAQ</a>
+                <a className="nav-link" href="/faq">Informatii utile</a>
                 </li>
               </ul>
           </div>

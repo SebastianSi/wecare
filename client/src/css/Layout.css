@@ -1,7 +1,7 @@
 /* navigation menu */
 .logo {
-  width: 65px;
-  height: 65px;
+  width: 80px;
+  height: 80px;
   cursor: pointer;
 }
 
@@ -40,6 +40,31 @@
   background-color: #343a40;
 }
 
+
+/*informatii utile*/
+.green{
+  background: #6192b9;
+  color: #fff;
+  line-height: 24px;
+  margin: 0 0 10px;
+  padding: 7px 7px 3px;
+  font-size: 18px;
+  }
+
+.main-utils {
+  padding: 0px 20px 10px;
+}
+
+.container .green {
+  margin-top: 40px;
+}
+.presentation iframe {
+  width: 800px;
+  height: 570px;
+  padding: 20px;
+  margin:5px 150px 0 270px;
+ }
+
 .page-footer li {
   margin-bottom: 15px;
   font-size: 18px;
@@ -73,7 +98,6 @@ thead>tr>th:first-of-type {
 /* not found page */
 
 .page-not-found {
-  float: left;
   width: 100%;
   margin-top: 50px;
   margin-bottom: 50px;
@@ -230,7 +254,6 @@ img::-moz-selection {
 header.masthead {
   background: no-repeat center center;
   background-color: #868e96;
-  background-attachment: scroll;
   position: relative;
   -webkit-background-size: cover;
   -moz-background-size: cover;

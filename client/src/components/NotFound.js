@@ -1,5 +1,6 @@
 import React, {Component} from 'react'
 import PropTypes from 'prop-types'
+import NotFoundImg from '../images/404.png'
 
 class NotFound extends Component {
 
@@ -11,14 +12,10 @@ class NotFound extends Component {
   render() {
     return (
       <div className="page-not-found container">
-        <span className="page-not-found_paragraph">
-          Page not found
-        </span>
-        <a
-          className="page-not-found_link"
-          onClick={this.returnToHomePage}
-        >
-          Return to Home Page
+        <a>
+          <img src={NotFoundImg} alt="NotFound"
+            onClick={this.returnToHomePage}
+          />
         </a>
       </div>
     )
