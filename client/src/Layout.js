@@ -2,6 +2,7 @@ import React, {Component} from 'react'
 import PropTypes from 'prop-types'
 import {Route, withRouter} from 'react-router-dom'
 import Header from './components/Header'
+import MainHero from './components/MainHero'
 import FooterMenu from './components/FooterMenu'
 // import MovieModal from '../components/MovieModal/index'
 import './css/Layout.css'
@@ -22,6 +23,7 @@ class Layout extends Component {
         return(
             <div className="layout">
                 <Header />
+                <MainHero/>
                 <Route
                     {...props}
                     render={matchProps => <Component {...matchProps} />}

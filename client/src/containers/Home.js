@@ -41,10 +41,10 @@ class Home extends Component {
         return (
                 <div className="App">
                     <header className="App-header">
-                        <h1 className="App-title">Employees Management Platform</h1>
+                        <h1 className="App-title"></h1>
                     </header>
                     <p className="App-intro">
-                        Built with Java, Spring, React, and Material-UI.
+                        
                     </p>
                     <MainTableContainer
                         patients={this.state.patients}
